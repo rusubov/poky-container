@@ -1,4 +1,6 @@
 usersetup ALL=NOPASSWD: /usr/bin/restrict_groupadd.sh
 usersetup ALL=NOPASSWD: /usr/bin/restrict_useradd.sh
 usersetup ALL = (pokyuser) NOPASSWD:SETENV: /usr/bin/poky-launch.sh
+yoctouser ALL = (ALL) NOPASSWD:ALL
+pokyuser ALL = (ALL) NOPASSWD:ALL
 Defaults:usersetup !secure_path
