@@ -61,8 +61,3 @@ cmd = cmd.split()
 if args.cmd:
     cmd.extend(args.cmd)
 os.execvp(cmd[0], cmd)
-
-devDir = '/home/pokyuser/dev/'
-if not os.path.exists(devDir):
-    os.makedirs(devDir)
-    os.chown(devDir, uid, gid)
