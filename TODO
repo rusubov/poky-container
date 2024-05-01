@@ -1,0 +1,2 @@
+Move everything possible from the setup-project.sh to a script invoked from the
+dockerfile or the dockerfile itself

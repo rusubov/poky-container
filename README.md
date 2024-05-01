@@ -68,3 +68,15 @@ point.
   ```
   At this point you should be able to follow the same instructions as described
   in https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html
+
+
+* **New Usage**
+ * **Linux**
+ build
+ ```
+ ./build_container.sh
+ ```
+ run
+ ```
+  docker run -it --rm -v /home/rusubov/dev:/home/pokyuser/dev <image-hash> --workdir=/home/pokyuser/dev
+ ```
