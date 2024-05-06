@@ -23,9 +23,10 @@ FROM crops/yocto:$BASE_DISTRO-base
 USER root
 
 ADD https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_useradd.sh  \
-        https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_groupadd.sh \
-        https://raw.githubusercontent.com/crops/extsdk-container/master/usersetup.py \
-        /usr/bin/
+    https://raw.githubusercontent.com/crops/extsdk-container/master/restrict_groupadd.sh \
+    https://raw.githubusercontent.com/crops/extsdk-container/master/usersetup.py \
+    /usr/bin/
+
 COPY distro-entry.sh poky-entry.py poky-launch.sh /usr/bin/
 COPY sudoers.usersetup /etc/
 
@@ -48,6 +49,12 @@ RUN userdel -r yoctouser && \
         /usr/bin/restrict_groupadd.sh \
         /usr/bin/restrict_useradd.sh && \
     echo "#include /etc/sudoers.usersetup" >> /etc/sudoers
+
+RUN apt-get update
+RUN apt-get install -y build-essential chrpath git curl diffstat gawk libncurses5-dev python3-distutils texinfo openjdk-8-jdk expect p7zip-full emacs
+RUN apt-get purge -y nodejs
+RUN curl -sL https://deb.nodesource.com/setup_16.x |  bash -
+RUN apt-get install -y nodejs
 
 USER usersetup
 ENV LANG=en_US.UTF-8
