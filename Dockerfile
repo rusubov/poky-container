@@ -50,6 +50,7 @@ RUN userdel -r yoctouser && \
         /usr/bin/restrict_useradd.sh && \
     echo "#include /etc/sudoers.usersetup" >> /etc/sudoers
 
+# remove python3-distutils for newer ubuntu installations
 RUN apt-get update
 RUN apt-get install -y build-essential chrpath git curl diffstat gawk libncurses5-dev python3-distutils texinfo openjdk-8-jdk expect p7zip-full emacs
 RUN apt-get purge -y nodejs
