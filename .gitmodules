@@ -1,0 +1,3 @@
+[submodule "extsdk-container"]
+	path = extsdk-container
+	url = https://github.com/rusubov/extsdk-container.git
