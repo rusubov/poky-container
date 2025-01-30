@@ -52,7 +52,7 @@ RUN userdel -r yoctouser && \
 
 # remove python3-distutils for newer ubuntu installations
 RUN apt-get update
-RUN apt-get install -y build-essential chrpath git curl diffstat gawk libncurses5-dev python3-distutils texinfo openjdk-8-jdk expect p7zip-full emacs
+RUN apt-get install -y build-essential chrpath git curl diffstat gawk libncurses5-dev texinfo openjdk-8-jdk expect p7zip-full emacs
 RUN apt-get purge -y nodejs
 RUN curl -sL https://deb.nodesource.com/setup_16.x |  bash -
 RUN apt-get install -y nodejs

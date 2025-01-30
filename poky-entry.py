@@ -21,6 +21,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 import argparse
 import os
+import subprocess
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--workdir', default='/home/pokyuser',
@@ -53,6 +54,11 @@ elif args.workdir == '/home/pokyuser':
     # If the workdir wasn't specified pick a default uid and gid since
     # usersetup won't be able to calculate it from the non-existent workdir
     idargs = "--uid=1000 --gid=1000"
+
+# delete the ubuntu user that may collide with the external uid (for pokyuser)
+userdel_command = "sudo userdel ubuntu"
+userdel_command = userdel_command.split()
+subprocess.run(userdel_command)
 
 cmd = """usersetup.py --username=pokyuser --workdir={wd}
          {idargs} poky-launch.sh {wd}""" \
